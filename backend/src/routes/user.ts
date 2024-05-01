@@ -26,9 +26,7 @@ userRouter.post("/signup", async (c) => {
             }
           })
           const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
-          return c.json(
-            {jwt}
-          )
+          return c.json({ jwt, userData : { username : user.username, name : user.name}});
     } catch (error) {
         c.status(411);
         return c.text("Erorr while signing up");
@@ -54,7 +52,7 @@ userRouter.post('/signin', async (c) => {
         } 
     
         const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
-        return c.json({ jwt });
+        return c.json({ jwt, userData : { username : user.username, name : user.name}});
       } catch (error) {
         return c.text("Error while signing in");
       }

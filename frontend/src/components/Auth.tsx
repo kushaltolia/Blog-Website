@@ -14,6 +14,7 @@ export function Auth({type} : {type : "signup" | "signin"}) {
       const response = await axios.post(`https://backend.potycat.workers.dev/api/v1/user/${type === "signin" ? "signin" : "signup"}`, postInputs);
       const jwt = response.data.jwt;
       localStorage.setItem("token", jwt);
+      localStorage.setItem("userData", JSON.stringify(response.data.userData));
       navigate("/blogs");
     } catch (error) {
       

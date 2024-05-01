@@ -12,9 +12,9 @@ export function BlogCard({id, authorName, title, content, publishedDate}: BlogCa
         <div className = "p-4 border-b border-slate-200 pb-4 cursor-pointer">
         <div className = "flex">
             <div className = "flex justify-center flex-col">
-                <Avatar name = {authorName}/>
+                <Avatar name = {authorName} size = "small"/>
             </div>
-            <div className = "font-extralight pl-2 text-sm">{authorName}</div> 
+            <div className = "font-extralight pl-2 text-sm mt-0.5">{authorName[0].toUpperCase() + authorName.slice(1)}</div> 
             <div className = "pl-2 font-thin text-slate-500 text-sm">{publishedDate}</div>
             </div>
             <div className = "text-xl font-semibold pt-2">
@@ -31,10 +31,12 @@ export function BlogCard({id, authorName, title, content, publishedDate}: BlogCa
     )
 }
 
-export function Avatar({name} : {name : string}) {
+export function Avatar({ name, size }: { name: string; size: string }) {
+    let sizeStyle = size === "big" ? "w-9 h-9" : "w-6 h-6";
+    let textSize = size === "big" ? "text-big" : "text-xs";
     return (
-        <div className = "relative inline-flex items-center justify-center w-6 h-6 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-            <span className = "text-xs font-extralight text-gray-600 dark:text-gray-300">{name[0]}</span>
+        <div className = {`relative inline-flex items-center justify-center ${sizeStyle} overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}>
+            <span className = {`${textSize} font-extralight text-gray-600 dark:text-gray-300`}>{name[0].toUpperCase()}</span>
         </div>
-    )
+    );
 }
