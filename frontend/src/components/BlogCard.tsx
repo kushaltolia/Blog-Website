@@ -12,7 +12,7 @@ export function BlogCard({id, authorName, title, content, publishedDate}: BlogCa
         <div className = "p-4 border-b border-slate-200 pb-4 cursor-pointer">
         <div className = "flex">
             <div className = "flex justify-center flex-col">
-                <Avatar name = {authorName} size = "small"/>
+                <Avatar name = {authorName || "Anonymus"} size = "small"/>
             </div>
             <div className = "font-extralight pl-2 text-sm mt-0.5">{authorName[0].toUpperCase() + authorName.slice(1)}</div> 
             <div className = "pl-2 font-thin text-slate-500 text-sm">{publishedDate}</div>

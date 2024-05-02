@@ -24,7 +24,7 @@ export const AppBar = () => {
                 </Link>
                 <div className="relative">
                     <button onClick={toggleDropdown} className="focus:outline-none flex items-center">
-                        <Avatar name={authorName.name} size = "big"/>
+                        <Avatar name={authorName.name || "Anonymus"} size = "big"/>
                     </button>
                     {dropdownVisible && (
                         <div className="absolute top-full right-0 mt-3 bg-white border border-gray-200 rounded-md shadow-lg">
