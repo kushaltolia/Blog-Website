@@ -31,7 +31,7 @@ blogRouter.use("/*", async(c, next) => {
             error : "Unauthorized user"
         });
     }
-  })
+})
 blogRouter.post("/", async (c) => {
     const body = await c.req.json();
     const authorId = c.get("userId");

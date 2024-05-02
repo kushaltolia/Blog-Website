@@ -7,7 +7,7 @@ import { useState } from "react";
 export function Blogs() {
     const { loading, blogs } = useBlogs();
     const [currentPage, setCurrentPage] = useState(1);
-    const blogsPerPage = 3; // Number of blogs per page
+    const blogsPerPage = 5; // Number of blogs per page
 
     if (loading) {
         return (
@@ -53,11 +53,13 @@ export function Blogs() {
                 </div>
             </div>
             <div className="flex justify-center py-4">
-                {Array.from({ length: totalPages }, (_, i) => (
-                    <button key = {i + 1} onClick = {() => handlePageChange(i + 1)} className = {`px-3 py-1 mx-1 rounded-md ${currentPage === i + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}>
-                        {i + 1}
-                    </button>
-                ))}
+                {Array.from({length : totalPages}, (_, i) => {
+                    return (
+                        <button key = {i + 1} onClick = {() => handlePageChange(i + 1)} className = {`px-3 py-1 mx-1 rounded-md ${currentPage === i + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}>
+                            {i + 1}
+                        </button>
+                    );
+                })}
             </div>
         </div>
     );
